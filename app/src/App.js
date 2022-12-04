@@ -12,15 +12,20 @@ function App() {
   const [guesses, setGuesses] = useState([]);
   const [outcomes, setOutcomes] = useState([]);
   const [nextGuess, setNextGuess] = useState(SIDES.UNSET);
+  const [waiting, setWaiting] = useState(false);
 
   function play() {
     const newGuesses = [...guesses, nextGuess];
     const newCoin = Math.random() < 0.5 ? SIDES.HEADS : SIDES.TAILS;
-    console.log(newCoin);
     const newOutcomes = [...outcomes, newCoin];
     setGuesses(newGuesses);
-    setOutcomes(newOutcomes);
-    setNextGuess(SIDES.UNSET);
+    setWaiting(true);
+    setTimeout(
+      () => {
+        setOutcomes(newOutcomes);
+        setNextGuess(SIDES.UNSET);
+        setWaiting(false);
+      }, 1000);
   }
 
   return (
@@ -46,9 +51,14 @@ function App() {
         {
           outcomes.map(g => <Coin what={g}/>)
         }
+        { waiting && <WaitAnim /> }
       </div>
     </div>
   );
+}
+
+function WaitAnim() {
+  return <div className='waiting'>...</div>;
 }
 
 function Coin(props) {
