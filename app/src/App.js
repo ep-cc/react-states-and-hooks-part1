@@ -19,11 +19,19 @@ function App() {
   return (
     <div className="App">
       <h1>Coin flipping game</h1>
-      <Flipper />
       <div className='coin-container'>
+        <Label text='Next guess:'/>
+        <Flipper />
+      </div>
+      <div className='coin-container'>
+        <Label text='Guesses:'/>
         {
           guesses.map(g => <Coin what={g}/>)
         }
+      </div>
+      <div className='coin-container'>
+        <Label text='Outcomes:'/>
+        
       </div>
     </div>
   );
@@ -47,6 +55,10 @@ function Flipper() {
   } 
 
   return <div className='coin flipper' onClick={flip}>{what}</div>
+}
+
+function Label(props) {
+  return <div className='label'>{props.text}</div>;
 }
 
 export default App;

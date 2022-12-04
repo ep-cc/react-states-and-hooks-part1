@@ -29,3 +29,8 @@
   color: white;
   cursor: pointer;
 }
+
+.label {
+  width: 100px;
+  line-height: 40px;
+}
