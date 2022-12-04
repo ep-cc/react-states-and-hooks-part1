@@ -9,19 +9,25 @@ const SIDES = {
 };
 
 function App() {
-  const guesses = [
-    SIDES.HEADS,
-    SIDES.HEADS,
-    SIDES.TAILS,
-    SIDES.HEADS,
-  ];
+  const [guesses, setGuesses] = useState([]);
+  const [outcomes, setOutcomes] = useState([]);
+  const [nextGuess, setNextGuess] = useState(SIDES.UNSET);
+
+  function play() {
+    console.log('play...');
+  }
 
   return (
     <div className="App">
       <h1>Coin flipping game</h1>
       <div className='coin-container'>
         <Label text='Next guess:'/>
-        <Flipper />
+        <Flipper what={nextGuess} setWhat={setNextGuess}/>
+        <button
+          onClick={play}
+          disabled={nextGuess===SIDES.UNSET}>
+          PLAY
+        </button>
       </div>
       <div className='coin-container'>
         <Label text='Guesses:'/>
@@ -41,8 +47,9 @@ function Coin(props) {
   return <div className='coin'>{props.what}</div>
 }
 
-function Flipper() {
-  const [what, setWhat] = useState(SIDES.UNSET);
+function Flipper(props) {
+  const what = props.what;
+  const setWhat = props.setWhat;
 
   function flip() {
     if (what === SIDES.UNSET) {
