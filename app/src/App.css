@@ -13,3 +13,9 @@
   margin: 8px;
   user-select: none;
 }
+
+.coin-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -8,12 +8,20 @@ const SIDES = {
 };
 
 function App() {
+  const guesses = [
+    SIDES.HEADS,
+    SIDES.HEADS,
+    SIDES.TAILS,
+    SIDES.HEADS,
+  ];
+
   return (
     <div className="App">
       <h1>Coin flipping game</h1>
-      <div>
-        <Coin what={SIDES.HEADS}/>
-        <Coin what={SIDES.TAILS}/>
+      <div className='coin-container'>
+        {
+          guesses.map(g => <Coin what={g}/>)
+        }
       </div>
     </div>
   );
