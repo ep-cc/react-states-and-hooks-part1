@@ -15,7 +15,11 @@ function App() {
 
   function play() {
     const newGuesses = [...guesses, nextGuess];
+    const newCoin = Math.random() < 0.5 ? SIDES.HEADS : SIDES.TAILS;
+    console.log(newCoin);
+    const newOutcomes = [...outcomes, newCoin];
     setGuesses(newGuesses);
+    setOutcomes(newOutcomes);
     setNextGuess(SIDES.UNSET);
   }
 
@@ -39,7 +43,9 @@ function App() {
       </div>
       <div className='coin-container'>
         <Label text='Outcomes:'/>
-        
+        {
+          outcomes.map(g => <Coin what={g}/>)
+        }
       </div>
     </div>
   );
