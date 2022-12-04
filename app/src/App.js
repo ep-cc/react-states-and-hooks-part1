@@ -14,7 +14,9 @@ function App() {
   const [nextGuess, setNextGuess] = useState(SIDES.UNSET);
 
   function play() {
-    console.log('play...');
+    const newGuesses = [...guesses, nextGuess];
+    setGuesses(newGuesses);
+    setNextGuess(SIDES.UNSET);
   }
 
   return (
@@ -25,7 +27,7 @@ function App() {
         <Flipper what={nextGuess} setWhat={setNextGuess}/>
         <button
           onClick={play}
-          disabled={nextGuess===SIDES.UNSET}>
+          disabled={nextGuess === SIDES.UNSET}>
           PLAY
         </button>
       </div>
