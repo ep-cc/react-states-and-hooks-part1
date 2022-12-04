@@ -1,3 +1,15 @@
 .App {
   font-family:Arial, Helvetica, sans-serif;
 }
+
+.coin {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: x-large;
+  text-align: center;
+  border: solid 1px gray;
+  border-radius: 20px;
+  margin: 8px;
+  user-select: none;
+}
