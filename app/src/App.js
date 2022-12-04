@@ -36,7 +36,7 @@ function App() {
         <Flipper what={nextGuess} setWhat={setNextGuess}/>
         <button
           onClick={play}
-          disabled={nextGuess === SIDES.UNSET}>
+          disabled={nextGuess === SIDES.UNSET || waiting}>
           PLAY
         </button>
       </div>
@@ -58,7 +58,7 @@ function App() {
 }
 
 function WaitAnim() {
-  return <div className='waiting'>...</div>;
+  return <div className='waiting'><Coin what={SIDES.UNSET}/></div>;
 }
 
 function Coin(props) {

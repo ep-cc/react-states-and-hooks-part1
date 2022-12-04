@@ -34,3 +34,11 @@
   width: 100px;
   line-height: 40px;
 }
+
+.waiting {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}
